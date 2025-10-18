@@ -16,7 +16,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <Link href="/" data-testid="link-nav-home">
               <Button 
                 variant={location === "/" ? "default" : "ghost"}
@@ -31,6 +31,22 @@ export default function Navbar() {
                 className={location === "/achievements" ? "bg-primary text-primary-foreground" : ""}
               >
                 Achievements
+              </Button>
+            </Link>
+            <Link href="/ncc" data-testid="link-nav-ncc">
+              <Button 
+                variant={location === "/ncc" ? "default" : "ghost"}
+                className={location === "/ncc" ? "bg-primary text-primary-foreground" : ""}
+              >
+                NCC
+              </Button>
+            </Link>
+            <Link href="/math-tricks" data-testid="link-nav-math-tricks">
+              <Button 
+                variant={location === "/math-tricks" ? "default" : "ghost"}
+                className={location === "/math-tricks" ? "bg-primary text-primary-foreground" : ""}
+              >
+                Math Tricks
               </Button>
             </Link>
           </div>

@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home";
 import Achievements from "@/pages/Achievements";
+import NCC from "@/pages/NCC";
+import MathTricks from "@/pages/MathTricks";
 import NotFound from "@/pages/not-found";
 import { useEffect, useState } from "react";
 
@@ -28,6 +30,8 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/achievements" component={Achievements} />
+      <Route path="/ncc" component={NCC} />
+      <Route path="/math-tricks" component={MathTricks} />
       <Route component={NotFound} />
     </Switch>
   );
