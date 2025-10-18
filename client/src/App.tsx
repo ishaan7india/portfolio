@@ -1,4 +1,4 @@
-import { Switch, Route } from "wouter";
+import { Switch, Route, useLocation } from "wouter";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -8,6 +8,7 @@ import Achievements from "@/pages/Achievements";
 import NCC from "@/pages/NCC";
 import MathTricks from "@/pages/MathTricks";
 import NotFound from "@/pages/not-found";
+import LoadingScreen from "@/components/LoadingScreen";
 import { useEffect, useState } from "react";
 
 function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -26,6 +27,26 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
 }
 
 function Router() {
+  const [location] = useLocation();
+  const [isLoading, setIsLoading] = useState(false);
+  const [prevLocation, setPrevLocation] = useState(location);
+
+  useEffect(() => {
+    if (location !== prevLocation) {
+      setIsLoading(true);
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        setPrevLocation(location);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [location, prevLocation]);
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
   return (
     <Switch>
       <Route path="/" component={Home} />
