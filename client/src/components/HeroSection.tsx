@@ -51,7 +51,7 @@ export default function HeroSection() {
         </div>
         
         <p className="text-xl md:text-2xl text-foreground/90 font-medium" data-testid="text-hero-subtitle">
-          Grade 9 • DPS Bangalore East
+          Grade 9R • DPS Bangalore East
         </p>
       </div>
     </section>
